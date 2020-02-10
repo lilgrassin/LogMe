@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="using:LogMe.Views" x:Class="LogMe.Views.LogEntryPage" Title="Log Entry" x:Name="test">
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Start:"/>
+        <StackLayout Spacing="40" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <DatePicker x:Name="startDatePicker"
+                        MaximumDate="{Binding Source={x:Static x:DateTime.Now}, Path=Date}"
+                        Margin="0"
+                        Date="{Binding StartDate}"/>
+
+            <TimePicker x:Name="startTimePicker"
+                        Margin="0"
+                        Time="{Binding StartTime}"/>
+        </StackLayout>
+
+        <Label Text="End:"/>
+        <StackLayout Spacing="40" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <DatePicker x:Name="endDatePicker"
+                    MinimumDate="{Binding Source={x:Reference startDatePicker},
+                                          Path=Date}"
+                    Margin="0"
+                    Date="{Binding EndDate}"/>
+
+            <TimePicker x:Name="endTimePicker"
+                        Margin="0"
+                        Time="{Binding EndTime}"/>
+        </StackLayout>
+
+        <Label x:Name="severitySliderLabel" Text="{Binding Source={x:Reference severitySlider},
+                                          Path=Value}"/>
+        <Slider x:Name="severitySlider" Maximum="10" Value="{Binding Entry.Severity}" ValueChanged="OnSeverityChanged"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="Affected Areas"/>
+            <Button x:Name="triggerButton" Grid.Column="1"
+                    Text="Triggers"
+                    Command="{Binding FlareTriggersCommand}"
+                    CommandParameter="{x:Type local:LogEntryTriggersPage}"
+                    />
+        </Grid>
+
+        <Editor Placeholder="Enter your note"
+                Text="{Binding Entry.Notes}"
+                HeightRequest="100" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="Save" Command="{Binding SaveCommand}"/>
+            <Button Grid.Column="1"
+                    Text="Delete"
+                    Command="{Binding DeleteCommand}"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
