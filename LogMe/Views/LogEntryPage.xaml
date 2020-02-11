@@ -35,11 +35,12 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Text="Affected Areas"/>
+            <Button Text="Triggers" Command="{Binding GetTagsCommand}"
+                    CommandParameter="Trigger"/>
             <Button x:Name="triggerButton" Grid.Column="1"
-                    Text="Triggers"
-                    Command="{Binding FlareTriggersCommand}"
-                    CommandParameter="{x:Type local:LogEntryTriggersPage}"
+                    Text="Affected Areas"
+                    Command="{Binding GetTagsCommand}"
+                    CommandParameter="Affected Area"
                     />
         </Grid>
 

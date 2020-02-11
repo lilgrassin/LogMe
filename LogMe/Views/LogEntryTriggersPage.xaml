@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="LogMe.Views.LogEntryTriggersPage">
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="+"
                      Clicked="OnTriggerAddedClicked"/>
-    </ContentPage.ToolbarItems>
-    <CollectionView x:Name="triggersList"
+    </ContentPage.ToolbarItems>-->
+    <!--<CollectionView x:Name="triggersList"
               Margin="20" SelectionMode="Multiple" ItemsSource="{Binding FlareTriggers}" SelectedItems="{Binding SelectedFlareTriggers}" SelectionChangedCommand="{Binding SelectTriggersCommand, Mode=TwoWay}">
         <CollectionView.ItemTemplate>
         <DataTemplate>
@@ -14,5 +14,5 @@
             </StackLayout>
         </DataTemplate>
     </CollectionView.ItemTemplate>
-    </CollectionView>
+    </CollectionView>-->
 </ContentPage>

@@ -10,22 +10,19 @@ namespace LogMe.Views
 {
     public partial class LogEntryPage : ContentPage
     {
-        public LogEntryTriggersPage TriggersPage { get; set; }
 
         public LogEntryPage(LogEntry entry = null)
         {
             BindingContext = new LogEntryViewModel(Navigation, entry);
-            TriggersPage = new LogEntryTriggersPage(BindingContext as LogEntryViewModel);
-
             InitializeComponent();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if (BindingContext is LogEntryViewModel logEntryViewModel)
+            if (BindingContext is LogEntryViewModel logEntryVM)
             {
-                await logEntryViewModel.InitTags();
+                await logEntryVM.InitTags();
             }
         }
 

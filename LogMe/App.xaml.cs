@@ -10,15 +10,15 @@ namespace LogMe
 {
     public partial class App : Application
     {
-        static LogEntryDatabase database;
+        static EntryDatabase database;
 
-        public static LogEntryDatabase Database
+        public static EntryDatabase Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new LogEntryDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Notes.db3"));
+                    database = new EntryDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Entries.db3"));
                 }
                 return database;
             }
